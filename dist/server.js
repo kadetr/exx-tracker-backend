@@ -15,11 +15,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 const express_1 = __importDefault(require("express"));
-const path_1 = __importDefault(require("path"));
 const http_1 = __importDefault(require("http"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const morgan_1 = __importDefault(require("morgan"));
-const mongoose = require("mongoose");
+const mongoose_1 = __importDefault(require("mongoose"));
 dotenv_1.default.config();
 // import connectDB from "./config/db";
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
@@ -27,7 +26,7 @@ const exerciseRoutes_1 = __importDefault(require("./routes/exerciseRoutes"));
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const conn = yield mongoose.connect((_a = process.env.MONGO_URI) !== null && _a !== void 0 ? _a : "");
+        const conn = yield mongoose_1.default.connect((_a = process.env.MONGO_URI) !== null && _a !== void 0 ? _a : "");
         console.log(`MongoDB Connected: ${conn.connection.host}`);
     }
     catch (error) {
@@ -65,15 +64,16 @@ exxApp.use((req, res, next) => {
     }
     next();
 });
-if (process.env.NODE_ENV === 'production') {
-    exxApp.use(express_1.default.static(path_1.default.join(__dirname, '/frontend/build')));
-    exxApp.get('*', (req, res) => res.sendFile(path_1.default.resolve(__dirname, 'frontend', 'build', 'index.html')));
-}
-else {
-    exxApp.get('/', (req, res) => {
-        res.send('API is running....');
-    });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   exxApp.use(express.static(path.join(__dirname, '/frontend/build')))
+//   exxApp.get('*', (req: express.Request, res: express.Response) =>
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+//   )
+// } else {
+//   exxApp.get('/', (req: express.Request, res: express.Response) => {
+//     res.send('API is running....')
+//   })
+// }
 /** Error handling */
 exxApp.use((req, res, next) => {
     const error = new Error('not found');
@@ -84,4 +84,4 @@ exxApp.use((req, res, next) => {
 /** Server */
 const httpServer = http_1.default.createServer(exxApp);
 //const PORT = process.env.PORT;
-httpServer.listen(exports.config.server.port, () => console.log(`The server is running on port ${exports.config.server.port}`));
+httpServer.listen(process.env.PORT, () => console.log(`The server is running on port ${exports.config.server.port}`));
