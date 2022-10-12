@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "exercise tracker app with MERN&Typescript",
   "main": "dist/server.ts",
+  "type": "module",
   "scripts": {
     "start": "node dist/server.js",
     "tsc": "./node_modules/typescript/bin/tsc",
