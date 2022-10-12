@@ -50,9 +50,9 @@ exxApp.use("/api/exercises", exerciseRoutes);
 /** RULES OF API */
 exxApp.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
     // set the CORS policy
-    res.header('Access-Control-Allow-Origin', 'https://6346cebb6c1ad5135d6e10d4--exx-tracker-frontend.netlify.app');
+    res.header('Access-Control-Allow-Origin', '*');
     // set the CORS headers
-    res.header('Access-Control-Allow-Headers', 'origin, X-Requested-With,Content-Type,Accept, Authorization');
+    res.header('Access-Control-Allow-Headers', 'origin, X-Requested-With, Content-Type, Accept, Authorization');
     // set the CORS method headers
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'GET, PUT, DELETE, POST');
