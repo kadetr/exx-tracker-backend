@@ -62,17 +62,17 @@ exxApp.use((req: express.Request, res: express.Response, next: express.NextFunct
     next();
 });
 
-if (process.env.NODE_ENV === 'production') {
-  exxApp.use(express.static(path.join(__dirname, '/frontend/build')))
+// if (process.env.NODE_ENV === 'production') {
+//   exxApp.use(express.static(path.join(__dirname, '/frontend/build')))
 
-  exxApp.get('*', (req: express.Request, res: express.Response) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-  )
-} else {
-  exxApp.get('/', (req: express.Request, res: express.Response) => {
-    res.send('API is running....')
-  })
-}
+//   exxApp.get('*', (req: express.Request, res: express.Response) =>
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+//   )
+// } else {
+//   exxApp.get('/', (req: express.Request, res: express.Response) => {
+//     res.send('API is running....')
+//   })
+// }
 
 /** Error handling */
 exxApp.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -85,4 +85,4 @@ exxApp.use((req: express.Request, res: express.Response, next: express.NextFunct
 /** Server */
 const httpServer = http.createServer(exxApp);
 //const PORT = process.env.PORT;
-httpServer.listen(config.server.port, () => console.log(`The server is running on port ${config.server.port}`));
+httpServer.listen(process.env.PORT, () => console.log(`The server is running on port ${config.server.port}`));
