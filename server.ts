@@ -1,12 +1,11 @@
 /** source/server.ts */
 
 import express, {Express} from "express";
-import path from 'path'
 import http from 'http';
 
 import dotenv from "dotenv";
 import morgan from 'morgan';
-const mongoose = require("mongoose")
+import mongoose from "mongoose";
 
 dotenv.config();
 
