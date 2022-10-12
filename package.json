@@ -4,7 +4,7 @@
   "description": "exercise tracker app with MERN&Typescript",
   "main": "dist/server.ts",
   "scripts": {
-    "start": "ts-node dist/server.js",
+    "start": "node dist/server.js",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "KDT",
