@@ -7,7 +7,6 @@
     "start": "node dist/server.js",
     "tsc": "./node_modules/typescript/bin/tsc",
     "build": "tsc",
-    "postinstall": "npm run build",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "KDT",
