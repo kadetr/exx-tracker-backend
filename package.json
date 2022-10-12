@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "description": "exercise tracker app with MERN&Typescript",
   "main": "dist/server.ts",
-  "type": "module",
   "scripts": {
     "start": "node dist/server.js",
     "tsc": "./node_modules/typescript/bin/tsc",
     "build": "tsc",
+    "postinstall": "npm run build",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "KDT",
