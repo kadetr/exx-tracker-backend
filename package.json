@@ -2,12 +2,13 @@
   "name": "exx-tracker-backend",
   "version": "0.1.0",
   "description": "exercise tracker app with MERN&Typescript",
-  "main": "dist/server.ts",
+  "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
+    "start:dev": "ts-node server.ts",
     "tsc": "./node_modules/typescript/bin/tsc",
     "build": "tsc",
-    "postinstall": "npm run node_modules/typescript/bin/tsc",
+    "postinstall": "npm run build",
     "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "KDT",
